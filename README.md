@@ -1,2 +1,5 @@
 # utility_sample
-C++ ユーティリティ
+
+ユーティリティ系の関数/クラスを解説とともにまとめます。
+
+[解説](/include/utility/README.md)
