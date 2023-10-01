@@ -124,7 +124,7 @@ std::vector<int> range(const int& start, const int& end, const int& interval=1) 
 }
 
 template<size_t ROW, size_t COL, typename T>
-bool copy(T (&source)[ROW][COL], std::vector<std::vector<T>>& target, const size_t& row_size=ROW, const size_t& column_size=COL) noexcept
+bool copy(T (&source)[ROW][COL], std::vector<std::vector<T>>& target, const size_t& row_size=ROW, const size_t& column_size=COL)
 {
     if(!(row_size>0 && column_size>0 && row_size<=ROW && column_size<=COL))
         return false;
@@ -141,7 +141,7 @@ bool copy(T (&source)[ROW][COL], std::vector<std::vector<T>>& target, const size
 }
 
 template<size_t ROW, size_t COL, typename T>
-bool copy(std::vector<std::vector<T>>& source, T (&target)[ROW][COL], const size_t& row_size=ROW, const size_t& column_size=COL) noexcept
+bool copy(std::vector<std::vector<T>>& source, T (&target)[ROW][COL], const size_t& row_size=ROW, const size_t& column_size=COL)
 {
     if(!(row_size>0 && column_size>0 && row_size<=ROW && column_size<=COL))
         return false;
