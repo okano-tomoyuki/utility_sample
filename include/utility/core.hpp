@@ -7,7 +7,10 @@
  * @date 2023-10-02 Updated by Okano Tomoyuki.
  * @n 1.Add copy function
  * @n 2.Add show function,
- * @n 3.Add DEBUG_PRINT MACRO
+ * @n 3.Add DEBUG_PRINT Macro
+ * @date 2023-10-03 Updated by Okano Tomoyuki.
+ * @n 1.Add algorithm header(std::max, std::min included in this header)
+ * @n 2.Add DEBUG_CAUTION,DEBUG_WARNING,DEBUG_CRITICAL Macro
  * @copyright Copyright (c) 2023
  * 
  */
@@ -21,10 +24,14 @@
 #include <string>
 #include <sstream>
 #include <typeinfo>
+#include <algorithm>
 
-#ifndef _DEBUG_MODE_
-    #define _DEBUG_MODE_ 1 
-    #define DEBUG_PRINT(var) if(_DEBUG_MODE_){do{std::cout << #var << "[" << typeid(var).name() << "]:\n";Utility::show(var);}while(0);}
+#define DEBUG_MODE 4 /** set one of {0 , 1, 2, 3, 4} */
+#ifdef DEBUG_MODE 
+    #define DEBUG_PRINT(var)    if(DEBUG_MODE>3){do{std::cout << "variable:" << #var << " (type:" << typeid(var).name() << ")\n";Utility::show(var);}while(0);}
+    #define DEBUG_CAUTION(var)  if(DEBUG_MODE>2){do{std::cout << "\033[32mvariable:" << #var << " (type:" << typeid(var).name() << ")\n";Utility::show(var);std::cout<<"\033[m";}while(0);}
+    #define DEBUG_WARNING(var)  if(DEBUG_MODE>1){do{std::cout << "\033[33mvariable:" << #var << " (type:" << typeid(var).name() << ")\n";Utility::show(var);std::cout<<"\033[m";}while(0);}
+    #define DEBUG_CRITICAL(var) if(DEBUG_MODE>0){do{std::cout << "\033[31mvariable:" << #var << " (type:" << typeid(var).name() << ")\n";Utility::show(var);std::cout<<"\033[m";}while(0);}
 #endif
 
 namespace Utility
